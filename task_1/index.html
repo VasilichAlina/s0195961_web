@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домашняя работа по вебу</title>
+</head>
+<body>
+    <h1>Домашняя работа по Web-программированию</h1>
+    
+    <h2>Маркированный список гиперссылок</h2>
+    <ul>
+        <li><a href="http://kubsu.ru/">Абсолютная гиперссылка на kubsu.ru</a></li>
+        <li><a href="https://kubsu.ru/">Абсолютная гиперссылка на kubsu.ru (HTTPS)</a></li>
+        <li><a href="https://kubsu.ru/"><img src="E:\Загрузки Kingston\1\1\image.jpg" width="500" alt="Ссылка-изображение"></a></li>
+        <li><a href="/internal-page">Сокращенная ссылка на внутреннюю страницу</a></li>
+        <li><a href="/">Сокращенная ссылка на главную страницу</a></li>
+        <li><a href="#fragment">Ссылка на фрагмент текущей страницы</a></li>
+        <li><a href="https://example.com/page?param1=value1&param2=value2&param3=value3">Ссылка с тремя параметрами</a></li>
+        <li><a href="https://example.com/page?id=test">Ссылка с параметром id</a></li>
+        <li><a href="curent-page.html">Относительная ссылка в текущем каталоге</a></li>
+        <li><a href="about/name.html">Относительная ссылка в каталоге about</a></li>
+        <li><a href="../parent_page.html">Страница на уровень выше</a></li>
+        <li><a href="../../grandparent_page.html">Страница на два уровня выше</a></li>
+        <li><p>Это пример контекстной ссылки внутри абзаца: <a href="https://example.com">перейдите по этой ссылке</a> для получения дополнительной информации.</p></li>
+        <li><a href="https://ru.wikipedia.org/wiki/HTML#История">Фрагмент на Wikipedia</a></li>
+        <li>
+            <img src="logo.jpg" width="500" alt="Image map" class="map-image" usemap="#examplemap">
+            <map name="examplemap">
+                <area shape="rect" coords="250,500,0,0" href="https://example.com/rect" alt="Прямоугольная область">
+                <area shape="circle" coords="321,169,89" href="https://example.com/circle" alt="Круглая область">
+            </map>
+        </li>
+        <li><a href="">Ссылка с пустым href</a></li>
+        <li><a>Ссылка без href</a></li>
+        <li><a href="https://example.com/no-follow" rel="nofollow">Ссылка без индексирования перехода</a></li>
+        <li><a href="https://example.com/no-index" rel="noindex">Ссылка без индексирования страницы</a></li>
+        <li>Нумерованный список ссылок с подписями:
+            <ol>
+                <li><a href="https://google.com" title="Поисковая система Google">Google</a></li>
+                <li><a href="https://yandex.ru" title="Поисковая система Яндекс">Яндекс</a></li>
+            </ol>
+        </li>
+        <li><a href="ftp://user:password@ftp.example.com/file.txt">FTP-файл с авторизацией</a></li>
+</ul>
+
+<h3 id="form_section">Форма</h3>
+
+    <h2>Форма</h2>
+    <form action="#" method="post">
+        <div>
+            <label for="fio">ФИО:</label>
+             <input type="tel" id="phone" name="phone" required>
+
+        </div>
+        
+        <div>
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        
+        <div>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div>
+            <label for="birthdate">Дата рождения:</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+        </div>
+        
+        <fieldset>
+            <legend>Пол:</legend>
+            <label>
+                <input type="radio" name="gender" value="male" required> Мужской
+            </label>
+            <label>
+                <input type="radio" name="gender" value="female"> Женский
+            </label>
+        </fieldset>
+        
+        <label for="languages">Любимый язык программирования:</label><br>
+        <select id="languages" name="languages[]" multiple size="5">
+            <option value="pascal">Pascal</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="javascript">JavaScript</option>
+            <option value="php">PHP</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="haskell">Haskell</option>
+            <option value="clojure">Clojure</option>
+            <option value="prolog">Prolog</option>
+            <option value="scala">Scala</option>
+        </select><br><br>
+        
+        <label for="bio">Биография:</label><br>
+        <textarea id="bio" name="bio" rows="4" cols="50"></textarea><br><br>
+        
+        <div>
+            <label>
+                <input type="checkbox" name="agreement" required> С контрактом ознакомлен(а)
+            </label>
+        </div>
+        
+        <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>
