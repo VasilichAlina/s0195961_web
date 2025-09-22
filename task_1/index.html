@@ -12,7 +12,7 @@
     <ul>
         <li><a href="http://kubsu.ru/">Абсолютная гиперссылка на kubsu.ru</a></li>
         <li><a href="https://kubsu.ru/">Абсолютная гиперссылка на kubsu.ru (HTTPS)</a></li>
-        <li><a href="https://kubsu.ru/"><img src="E:\Загрузки Kingston\1\1\image.jpg" width="500" alt="Ссылка-изображение"></a></li>
+        <li><a href="https://kubsu.ru/"><img src="image.jpg" width="500" alt="Ссылка-изображение"></a></li>
         <li><a href="/internal-page">Сокращенная ссылка на внутреннюю страницу</a></li>
         <li><a href="/">Сокращенная ссылка на главную страницу</a></li>
         <li><a href="#fragment">Ссылка на фрагмент текущей страницы</a></li>
@@ -24,10 +24,21 @@
         <li><a href="../../grandparent_page.html">Страница на два уровня выше</a></li>
         <li><p>Это пример контекстной ссылки внутри абзаца: <a href="https://example.com">перейдите по этой ссылке</a> для получения дополнительной информации.</p></li>
         <li><a href="https://ru.wikipedia.org/wiki/HTML#История">Фрагмент на Wikipedia</a></li>
-        <li>
-            <img src="logo.jpg" width="500" alt="Image map" class="map-image" usemap="#examplemap">
+        <li style="position: relative; display: inline-block;">
+            <img src="logo.jpg" width="500" alt="Image map" class="map-image" usemap="#examplemap" style="display: block;">
+
+            
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                
+                <a href="https://example.com/rect" style="position: absolute; left: 200px; top: 80px; width: 50px; height: 50px; background: rgba(255, 0, 0, 0.3); border: 2px solid red; box-sizing: border-box; pointer-events: auto;" title="Прямоугольная область"></a>
+
+                
+                <a href="https://example.com/circle" style="position: absolute; left: 250px; top: 80px; width: 50px; height: 50px; border-radius: 50%; background: rgba(0, 123, 255, 0.3); border: 2px solid blue; box-sizing: border-box; pointer-events: auto;" title="Круглая область"></a>
+            </div>
+
+            
             <map name="examplemap">
-                <area shape="rect" coords="250,500,0,0" href="https://example.com/rect" alt="Прямоугольная область">
+                <area shape="rect" coords="0,0,250,500" href="https://example.com/rect" alt="Прямоугольная область">
                 <area shape="circle" coords="321,169,89" href="https://example.com/circle" alt="Круглая область">
             </map>
         </li>
