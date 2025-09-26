@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивный сайт - Лабораторная 2</title>
+    <style>
+        /* Mobile First - стили для мобильных устройств */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #FFE4E1;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        
+        /* Шапка сайта */
+        #header {
+            background-color: #DB7093;
+            padding: 10px 0;
+            width: 100%;
+        }
+        
+        .header-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            max-width: 100px;
+            height: auto;
+        }
+        
+        .site-title {
+            text-align: center;
+            color: #571232;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        /* Навигация - вертикальное меню на мобильных */
+        nav {
+            width: 100%;
+            background-color: #34495e;
+        }
+        
+        .menu {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            list-style: none;
+        }
+        
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-bottom: 1px solid #4a6278;
+            transition: background-color 0.3s;
+        }
+        
+        .menu a:last-child {
+            border-bottom: none;
+        }
+        
+        .menu a:hover {
+            background-color: #4a6278;
+        }
+        
+        /* Основной контент */
+        main {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            width: 100%;
+        }
+        
+        .section {
+            padding: 15px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .section h2, .section h3 {
+            color: #571232;
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        a {
+            color: #DB7093;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Таблица */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .data-table th,
+        .data-table td {
+            border: 2px solid #DB7093;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .data-table th {
+            background-color: #FFE4E1;
+            color: #571232;
+            font-weight: bold;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .data-table tr:hover {
+            background-color: rgba(255, 230, 230, 0.7);
+        }
+        
+        /* Форма */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #571232;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #DB7093;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        fieldset {
+            border: 1px solid #DB7093;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        legend {
+            font-weight: bold;
+            color: #571232;
+            padding: 0 10px;
+        }
+        
+        button {
+            background-color: #DB7093;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            background-color: #c25d7e;
+        }
+        
+        /* Футер */
+        #footer {
+            background-color: #DB7093;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        /* Изменение порядка элементов с помощью Flexbox order */
+        #links {
+            order: 2; /* Список ссылок будет после таблицы на мобильных */
+        }
+        
+        #table {
+            order: 1; /* Таблица будет перед списком ссылок на мобильных */
+        }
+        
+        #form {
+            order: 3; /* Форма будет последней */
+        }
+        
+        /* Медиа-запросы для планшетов (768px и выше) */
+        @media (min-width: 768px) {
+            .header-top {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .site-title {
+                font-size: 24px;
+            }
+            
+            /* Навигация - горизонтальное меню на планшетах и десктопах */
+            nav {
+                background-color: #DB7093;
+            }
+            
+            .menu {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .menu a {
+                border-bottom: none;
+                border-right: 1px solid rgba(255, 255, 255, 0.3);
+                color: #571232;
+            }
+            
+            .menu a:last-child {
+                border-right: none;
+            }
+            
+            .menu a:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            
+            /* Возвращаем исходный порядок элементов */
+            #links {
+                order: 1;
+            }
+            
+            #table {
+                order: 2;
+            }
+            
+            #form {
+                order: 3;
+            }
+        }
+        
+        /* Медиа-запросы для десктопов (992px и выше) */
+        @media (min-width: 992px) {
+            .header-top {
+                padding: 15px 0;
+            }
+            
+            .menu {
+                gap: 0;
+            }
+            
+            .menu a {
+                padding: 15px 20px;
+            }
+            
+            main {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            
+            .section {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    
+                <div class="logo"><img src="logo.webp" width="100"></div> 
+                    
+                <div class="site-title">Классный сайт</div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul class="menu">
+                <li><a href="#links">Гиперссылки</a></li>
+                <li><a href="#table">Табличка</a></li>
+                <li><a href="#form">Форма</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section id="table" class="section">
+            <h2>Таблица</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Наименование</th>
+                        <th>Категория</th>
+                        <th>Цена</th>
+                        <th>Количество</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Ноутбук ASUS</td>
+                        <td>Электроника</td>
+                        <td>50 000 ₽</td>
+                        <td>15</td>
+                        <td>В наличии</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Смартфон Samsung</td>
+                        <td>Электроника</td>
+                        <td>30 000 ₽</td>
+                        <td>8</td>
+                        <td>В наличии</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Наушники Sony</td>
+                        <td rowspan="2">Аксессуары</td>
+                        <td>15 000 ₽</td>
+                        <td>25</td>
+                        <td>В наличии</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Чехол для телефона</td>
+                        <td>1 500 ₽</td>
+                        <td>50</td>
+                        <td>В наличии</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td colspan="2">Компьютерная мышь Logitech</td>
+                        <td>3 000 ₽</td>
+                        <td>12</td>
+                        <td>Нет в наличии</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Монитор Dell</td>
+                        <td>Электроника</td>
+                        <td>40 000 ₽</td>
+                        <td>5</td>
+                        <td>В наличии</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="links" class="section">
+            <h2>Маркированный список гиперссылок</h2>
+            <ul>
+                <li><a href="http://kubsu.ru/">Абсолютная гиперссылка на kubsu.ru</a></li>
+                <li><a href="https://kubsu.ru/">Абсолютная гиперссылка на kubsu.ru (HTTPS)</a></li>
+                <li><a href="https://kubsu.ru/"><img src="image.jpg" width="500" alt="Ссылка-изображение"></a></li>
+               <li><a href="/internal-page">Сокращенная ссылка на внутреннюю страницу</a></li>
+                <li><a href="/">Сокращенная ссылка на главную страницу</a></li>
+                <li><a href="#form">Ссылка на фрагмент текущей страницы (форма)</a></li>
+                <li><a href="https://example.com/page?param1=value1&param2=value2&param3=value3">Ссылка с тремя параметрами</a></li>
+                <li><a href="https://example.com/page?id=test">Ссылка с параметром id</a></li>
+                <li><a href="curent-page.html">Относительная ссылка в текущем каталоге</a></li>
+                <li><a href="about/name.html">Относительная ссылка в каталоге about</a></li>
+                <li><a href="../parent_page.html">Страница на уровень выше</a></li>
+                <li><a href="../../grandparent_page.html">Страница на два уровня выше</a></li>
+                <li><p>Это пример контекстной ссылки внутри абзаца: <a href="https://example.com">перейдите по этой ссылке</a> для получения дополнительной информации.</p></li>
+                <li><a href="https://ru.wikipedia.org/wiki/HTML#История">Фрагмент на Wikipedia</a></li>
+                <li><a href="">Ссылка с пустым href</a></li>
+                <li><a>Ссылка без href</a></li>
+                <li><a href="https://example.com/no-follow" rel="nofollow">Ссылка без индексирования перехода</a></li>
+                <li><a href="https://example.com/no-index" rel="noindex">Ссылка без индексирования страницы</a></li>
+                <li>Нумерованный список ссылок с подписями:
+                    <ol>
+                        <li><a href="https://google.com" title="Поисковая система Google">Google</a></li>
+                        <li><a href="https://yandex.ru" title="Поисковая система Яндекс">Яндекс</a></li>
+                    </ol>
+                </li>
+                <li><a href="ftp://user:password@ftp.example.com/file.txt">FTP-файл с авторизацией</a></li>
+            </ul>
+        </section>
+
+        <section id="form" class="section">
+            <h3>Форма</h3>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="fio">ФИО:</label>
+                    <input type="text" id="fio" name="fio" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="birthdate">Дата рождения:</label>
+                    <input type="date" id="birthdate" name="birthdate">
+                </div>
+                
+                <div class="form-group">
+                    <fieldset>
+                        <legend>Пол:</legend>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Мужской</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Женский</label>
+                    </fieldset>
+                </div>
+                
+                <div class="form-group">
+                    <label for="languages">Любимый язык программирования:</label>
+                    <select id="languages" name="languages[]" multiple size="5">
+                        <option value="pascal">Pascal</option>
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="php">PHP</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="haskell">Haskell</option>
+                        <option value="clojure">Clojure</option>
+                        <option value="prolog">Prolog</option>
+                        <option value="scala">Scala</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bio">Биография:</label>
+                    <textarea id="bio" name="bio" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <input type="checkbox" id="contract" name="contract" required>
+                    <label for="contract">С контрактом ознакомлен(а)</label>
+                </div>
+                
+                <button type="submit">Сохранить</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2025 Васильва Алина. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
