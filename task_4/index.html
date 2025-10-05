@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная 4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #FFE4E1;
+            color: #333;
+        }
+        
+        .custom-header {
+            background-color: #DB7093;
+        }
+        
+        .site-title {
+            color: #571232;
+            font-weight: bold;
+        }
+        
+        .sidebar {
+            background-color: #34495e;
+        }
+        
+        .sidebar .nav-link {
+            color: white;
+            padding: 12px 15px;
+            border-bottom: 1px solid #4a6278;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: #4a6278;
+        }
+        
+        @media (min-width: 768px) {
+            .sidebar {
+                background-color: #DB7093;
+                min-height: 100vh;
+            }
+            
+            .sidebar .nav-link {
+                color: #571232;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            }
+            
+            .sidebar .nav-link:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        h2, h3 {
+            color: #571232;
+        }
+        
+        .data-table th {
+            background-color: #FFE4E1;
+            color: #571232;
+            font-size: 0.875rem;
+        }
+        
+        .data-table td {
+            font-size: 0.875rem;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .data-table tr:hover {
+            background-color: rgba(255, 230, 230, 0.7);
+        }
+        
+        .custom-footer {
+            background-color: #DB7093;
+            color: white;
+        }
+        
+        .form-control, .form-select {
+            border: 1px solid #DB7093;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .btn-custom {
+            background-color: #DB7093;
+            color: white;
+            border: none;
+        }
+        
+        .btn-custom:hover {
+            background-color: #c25d7e;
+        }
+        
+        fieldset {
+            border: 1px solid #DB7093;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        legend {
+            font-weight: bold;
+            color: #571232;
+            padding: 0 10px;
+        }
+        
+        @media (max-width: 767.98px) {
+            .data-table th,
+            .data-table td {
+                padding: 6px 4px;
+                font-size: 0.8rem;
+            }
+            
+            .section {
+                padding: 15px !important;
+            }
+            
+            .content-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .mobile-table-first {
+                order: -1;
+            }
+            
+            .mobile-links-second {
+                order: 0;
+            }
+            
+            .mobile-form-last {
+                order: 1;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .content-wrapper {
+                display: block;
+            }
+            
+            .mobile-table-first,
+            .mobile-links-second,
+            .mobile-form-last {
+                order: unset;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="custom-header py-3">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <div class="logo mb-2 mb-md-0">
+                    <img src="logo.webp" alt="Логотип" class="img-fluid" style="max-width: 100px;">
+                </div>
+                <div class="site-title text-center text-md-start">
+                    <h1 class="h4 mb-0">Классный сайт</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-3 col-lg-2 px-0">
+                <nav class="sidebar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#table">Табличка</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#links">Гиперссылки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#form">Форма</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <main class="col-12 col-md-9 col-lg-10 py-4">
+                <div class="container content-wrapper">
+                    
+                    <section id="links" class="section p-4 mb-4 mobile-links-second">
+                        <h2 class="h4 mb-3">Маркированный список гиперссылок</h2>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="http://kubsu.ru/" class="text-decoration-none">Абсолютная гиперссылка на kubsu.ru</a></li>
+                            <li class="mb-2"><a href="https://kubsu.ru/" class="text-decoration-none">Абсолютная гиперссылка на kubsu.ru (HTTPS)</a></li>
+                            <li class="mb-2"><a href="https://kubsu.ru/" class="text-decoration-none"><img src="image.jpg" alt="Ссылка-изображение" class="img-fluid" style="max-width: 50%;"></a></li>
+                            <li class="mb-2"><a href="/internal-page" class="text-decoration-none">Сокращенная ссылка на внутреннюю страницу</a></li>
+                            <li class="mb-2"><a href="/" class="text-decoration-none">Сокращенная ссылка на главную страницу</a></li>
+                            <li class="mb-2"><a href="#form" class="text-decoration-none">Ссылка на фрагмент текущей страницы (форма)</a></li>
+                            <li class="mb-2"><a href="https://example.com/page?param1=value1&param2=value2&param3=value3" class="text-decoration-none">Ссылка с тремя параметрами</a></li>
+                            <li class="mb-2"><a href="https://example.com/page?id=test" class="text-decoration-none">Ссылка с параметром id</a></li>
+                            <li class="mb-2"><a href="curent-page.html" class="text-decoration-none">Относительная ссылка в текущем каталоге</a></li>
+                            <li class="mb-2"><a href="about/name.html" class="text-decoration-none">Относительная ссылка в каталоге about</a></li>
+                            <li class="mb-2"><a href="../parent_page.html" class="text-decoration-none">Страница на уровень выше</a></li>
+                            <li class="mb-2"><a href="../../grandparent_page.html" class="text-decoration-none">Страница на два уровня выше</a></li>
+                            <li class="mb-2">
+                                <p class="mb-1">Это пример контекстной ссылки внутри абзаца: <a href="https://example.com" class="text-decoration-none">перейдите по этой ссылке</a> для получения дополнительной информации.</p>
+                            </li>
+                            <li class="mb-2"><a href="https://ru.wikipedia.org/wiki/HTML#История" class="text-decoration-none">Фрагмент на Wikipedia</a></li>
+                            <li class="mb-2"><a href="" class="text-decoration-none">Ссылка с пустым href</a></li>
+                            <li class="mb-2"><a class="text-decoration-none">Ссылка без href</a></li>
+                            <li class="mb-2"><a href="https://example.com/no-follow" rel="nofollow" class="text-decoration-none">Ссылка без индексирования перехода</a></li>
+                            <li class="mb-2"><a href="https://example.com/no-index" rel="noindex" class="text-decoration-none">Ссылка без индексирования страницы</a></li>
+                            <li class="mb-2">
+                                Нумерованный список ссылок с подписями:
+                                <ol class="mt-2">
+                                    <li><a href="https://google.com" title="Поисковая система Google" class="text-decoration-none">Google</a></li>
+                                    <li><a href="https://yandex.ru" title="Поисковая система Яндекс" class="text-decoration-none">Яндекс</a></li>
+                                </ol>
+                            </li>
+                            <li class="mb-2"><a href="ftp://user:password@ftp.example.com/file.txt" class="text-decoration-none">FTP-файл с авторизацией</a></li>
+                        </ul>
+                    </section>
+                    
+                    <section id="table" class="section p-4 mb-4 mobile-table-first">
+                        <h2 class="h4 mb-3">Таблица</h2>
+                        <div class="table-responsive">
+                            <table class="table data-table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Наименование</th>
+                                        <th>Категория</th>
+                                        <th>Цена</th>
+                                        <th>Кол-во</th>
+                                        <th>Статус</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Ноутбук ASUS</td>
+                                        <td>Электроника</td>
+                                        <td>50 000 ₽</td>
+                                        <td>15</td>
+                                        <td>В наличии</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Смартфон Samsung</td>
+                                        <td>Электроника</td>
+                                        <td>30 000 ₽</td>
+                                        <td>8</td>
+                                        <td>В наличии</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Наушники Sony</td>
+                                        <td rowspan="2">Аксессуары</td>
+                                        <td>15 000 ₽</td>
+                                        <td>25</td>
+                                        <td>В наличии</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Чехол для телефона</td>
+                                        <td>1 500 ₽</td>
+                                        <td>50</td>
+                                        <td>В наличии</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td colspan="2">Мышь Logitech</td>
+                                        <td>3 000 ₽</td>
+                                        <td>12</td>
+                                        <td>Нет в наличии</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Монитор Dell</td>
+                                        <td>Электроника</td>
+                                        <td>40 000 ₽</td>
+                                        <td>5</td>
+                                        <td>В наличии</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                    
+                    <section id="form" class="section p-4 mobile-form-last">
+                        <h3 class="h4 mb-3">Форма</h3>
+                        <form action="#" method="post">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="fio" class="form-label">ФИО:</label>
+                                    <input type="text" class="form-control" id="fio" name="fio" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Телефон:</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email" name="email">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="birthdate" class="form-label">Дата рождения:</label>
+                                    <input type="date" class="form-control" id="birthdate" name="birthdate">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <fieldset>
+                                    <legend>Пол:</legend>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="male" name="gender" value="male">
+                                        <label class="form-check-label" for="male">Мужской</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="female" name="gender" value="female">
+                                        <label class="form-check-label" for="female">Женский</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="languages" class="form-label">Любимый язык программирования:</label>
+                                <select class="form-select" id="languages" name="languages[]" multiple size="5">
+                                    <option value="pascal">Pascal</option>
+                                    <option value="c">C</option>
+                                    <option value="cpp">C++</option>
+                                    <option value="javascript">JavaScript</option>
+                                    <option value="php">PHP</option>
+                                    <option value="python">Python</option>
+                                    <option value="java">Java</option>
+                                    <option value="haskell">Haskell</option>
+                                    <option value="clojure">Clojure</option>
+                                    <option value="prolog">Prolog</option>
+                                    <option value="scala">Scala</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="bio" class="form-label">Биография:</label>
+                                <textarea class="form-control" id="bio" name="bio" rows="4"></textarea>
+                            </div>
+                            
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="contract" name="contract" required>
+                                <label class="form-check-label" for="contract">С контрактом ознакомлен(а)</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-custom">Сохранить</button>
+                        </form>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <footer class="custom-footer py-3">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Васильва Алина. Все права защищены.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
