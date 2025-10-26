@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор стоимости товаров</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f5f5f5;
+        }
+        .calculator {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3a5980;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .result.success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .result.error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .result.default {
+            background-color: #e2e3e5;
+            border: 1px solid #d6d8db;
+            color: #383d41;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Калькулятор стоимости заказа</h1>
+        
+        <div class="form-group">
+            <label for="quantity">Количество товара:</label>
+            <input type="text" id="quantity" placeholder="Введите количество" value="1">
+            <small style="color: #666; font-size: 12px;">Только целые положительные числа</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="product">Выберите товар:</label>
+            <select id="product">
+                <option value="52000">Телевизор - 52000 ₽</option>
+                <option value="20600">Планшет - 20600 ₽</option>
+                <option value="30900">Ноутбук - 30900 ₽</option>                
+                <option value="25800">Смартфон - 25800 ₽</option>
+                <option value="7890">Наушники - 7890 ₽</option>
+            </select>
+        </div>
+        
+        <button id="calculateBtn">Рассчитать стоимость</button>
+        <div id="result" class="result default">
+            Введите количество и выберите товар
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const quantityInput = document.getElementById("quantity");
+            const productSelect = document.getElementById("product");
+            const calculateBtn = document.getElementById("calculateBtn");
+            const resultDiv = document.getElementById("result");
+
+            const quantityRegex = /^\d+$/;
+
+            function validateInput() {
+                const quantity = quantityInput.value.trim();
+                
+                if (!quantityRegex.test(quantity)) {
+                    resultDiv.textContent = "Ошибка: введите целое положительное число";
+                    resultDiv.className = "result error";
+                    return false;
+                }
+                
+                const quantityNum = parseInt(quantity);
+                if (quantityNum <= 0) {
+                    resultDiv.textContent = "Ошибка: количество должно быть больше 0";
+                    resultDiv.className = "result error";
+                    return false;
+                }
+                
+                return true;
+            }
+
+            function calculateTotal() {
+                if (!validateInput()) {
+                    return;
+                }
+
+                const quantity = parseInt(quantityInput.value);
+                const price = parseInt(productSelect.value);
+                const total = quantity * price;
+
+                resultDiv.textContent = `Стоимость заказа: ${total} ₽`;
+                resultDiv.className = "result success";
+            }
+
+            calculateBtn.addEventListener("click", calculateTotal);
+
+            quantityInput.addEventListener("input", function() {
+                if (validateInput()) {
+                    calculateTotal();
+                }
+            });
+
+            productSelect.addEventListener("change", function() {
+                if (validateInput()) {
+                    calculateTotal();
+                }
+            });
+
+            validateInput();
+        });
+    </script>
+</body>
+</html>
